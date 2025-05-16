@@ -1,0 +1,20 @@
+node_modules/
+*.env*
+
+# Ignore all node modules
+node_modules/
+
+# Ignore build outputs
+build/
+dist/
+
+# Ignore lock files
+yarn.lock
+package-lock.json
+
+# Ignore compiled files
+*.min.js
+*.bundle.js
+
+# Ignore HTML in public folder
+public/**/*.html
