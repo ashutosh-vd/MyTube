@@ -6,6 +6,8 @@ import User from '../models/user.model.js';
 import debug from 'debug';
 const log = debug('development:register');
 
+const generateToken = (req, res) => {};
+
 const registerUser = async (req, res) => {
 	//take and validate fields
 	//if user exists -> fail
@@ -55,6 +57,22 @@ const registerUser = async (req, res) => {
 	} catch (error) {
 		console.log(error);
 		res.status(400).json({'registerUser_error' : error});
+	}
+};
+
+const loginUser = async (req, res) => {
+	//req.body => verify 
+	//existing user
+	//passwordcheck
+	//token generate 
+	// give token and redirect
+	const {email, password} = req.body;
+	let existingUser = await User.findOne({email});
+	if(!existingUser) {
+		return res.status(401).json({'message':'Invalid Credentials'});
+	}
+	if(await existingUser.isPasswordCorrect(password)) {
+
 	}
 }
 
